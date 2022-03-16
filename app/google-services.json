@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "688266979316",
+    "project_id": "todolist-af2c8",
+    "storage_bucket": "todolist-af2c8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:688266979316:android:2aadb1324438f22bed3ba1",
+        "android_client_info": {
+          "package_name": "masondouglas.com.todolist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "688266979316-uee177771qp1dj4f529hfp5l7umcjs0l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCweLnOUWBPuIp2yYqiw-xW5MowcJzP5fw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "688266979316-uee177771qp1dj4f529hfp5l7umcjs0l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
