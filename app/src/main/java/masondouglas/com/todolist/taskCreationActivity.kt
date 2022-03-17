@@ -4,17 +4,25 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.lifecycle.ViewModel
+import androidx.activity.viewModels
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import masondouglas.com.todolist.databinding.ActivityTaskCreationBinding
+
+
 
 class taskCreationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTaskCreationBinding
-
+    private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityTaskCreationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        auth = Firebase.auth
         binding.btnCreateTask.setOnClickListener {
             var taskName = binding.txtTaskName.text.toString().trim()
             var description = binding.txtDescription.text.toString().trim()
@@ -26,7 +34,7 @@ class taskCreationActivity : AppCompatActivity() {
                 val db = FirebaseFirestore.getInstance().collection("task")
 
                 val id = db.document().getId()
-                var task = Task(taskName,description,dueDate, priority,id)
+                var task = Task(taskName,description,dueDate, priority,id, auth.currentUser!!.uid)
                 db.document(id).set(task)
                     .addOnSuccessListener { Toast.makeText(this,"Task added", Toast.LENGTH_LONG).show() }
                     .addOnFailureListener{ Log.w("DB_Fail", it.localizedMessage)}
@@ -35,5 +43,16 @@ class taskCreationActivity : AppCompatActivity() {
                 Toast.makeText(this, "Task name not entered", Toast.LENGTH_LONG).show()
             }
         }
+
+        val viewModel: taskViewModel by viewModels()
+        viewModel.getTasks().observe(this, {
+            for (task in it)
+                Log.i("DB_Response", "inside CreateTask, task: $task")
+
+        })
+
+
     }
+
 }
+
