@@ -11,13 +11,8 @@
         android:theme="@style/Theme.TodoList">
         <activity
             android:name=".taskCreationActivity"
-            android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            android:exported="false"/>
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        </activity>
         <activity
             android:name=".weeklyActivity"
             android:exported="false" />
@@ -26,7 +21,13 @@
             android:exported="false" />
         <activity
             android:name=".signinActivity"
-            android:exported="false" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="false"/>
