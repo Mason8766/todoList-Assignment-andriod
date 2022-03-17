@@ -3,6 +3,7 @@ package masondouglas.com.todolist
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.activity.viewModels
@@ -44,12 +45,15 @@ class taskCreationActivity : AppCompatActivity() {
             }
         }
 
-        val viewModel: taskViewModel by viewModels()
-        viewModel.getTasks().observe(this, {
-            for (task in it)
-                Log.i("DB_Response", "inside CreateTask, task: $task")
-
-        })
+//        val viewModel: taskViewModel by viewModels()
+//        viewModel.getTasks().observe(this, {
+//            for (task in it)
+//                Log.i("DB_Response", "inside CreateTask, task: $task")
+//                var newTaskTextView = TextView(this)
+//                newTaskTextView.text = it.toString()
+//
+//
+//        })
 
 
     }
