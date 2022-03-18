@@ -50,15 +50,6 @@ class taskCreationActivity : AppCompatActivity() {
             }
         }
 
-//        val viewModel: taskViewModel by viewModels()
-//        viewModel.getTasks().observe(this, {
-//            for (task in it)
-//                Log.i("DB_Response", "inside CreateTask, task: $task")
-//                var newTaskTextView = TextView(this)
-//                newTaskTextView.text = it.toString()
-//
-//
-//        })
 
 
     }

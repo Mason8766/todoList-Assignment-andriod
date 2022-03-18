@@ -7,7 +7,7 @@
     tools:context=".subTaskActivity">
 
     <TextView
-        android:id="@+id/lnlDescription"
+        android:id="@+id/lblDescription"
         android:layout_width="353dp"
         android:layout_height="121dp"
         android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore"
@@ -36,7 +36,7 @@
         android:id="@+id/lblTaskName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TASK NAME"
+        android:text=""
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

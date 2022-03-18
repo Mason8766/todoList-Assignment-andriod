@@ -10,7 +10,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 public class TaskAdapter(val context: Context,
-                  val tasks : List<Task>
+                  val tasks : List<Task>,
+                         val itemListener : taskItemListener
                   ) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
                       inner class TaskViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
@@ -33,6 +34,9 @@ public class TaskAdapter(val context: Context,
             taskTextView.text = task.taskName
             priorityTextView.text = task.priority
             dateTextView.text = task.dueDate
+            itemView.setOnClickListener {
+                itemListener.taskSelected(task)
+            }
 
 
             when(task.priority) {
@@ -51,6 +55,10 @@ public class TaskAdapter(val context: Context,
 
     override fun getItemCount(): Int {
         return tasks.size
+    }
+
+    interface taskItemListener{
+        fun taskSelected(task : Task)
     }
 
 
