@@ -1,6 +1,7 @@
 package masondouglas.com.todolist
 
 import android.content.Context
+import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -33,6 +34,18 @@ public class TaskAdapter(val context: Context,
             priorityTextView.text = task.priority
             dateTextView.text = task.dueDate
 
+
+            when(task.priority) {
+                "1" -> priorityTextView.setTextColor(Color.parseColor("#FF0000"))
+                "2" -> priorityTextView.setTextColor(Color.parseColor("#FF4700"))
+                "3" -> priorityTextView.setTextColor(Color.parseColor("#FF9900"))
+                "8" -> priorityTextView.setTextColor(Color.parseColor("#8CFF00"))
+                "9" ->priorityTextView.setTextColor(Color.parseColor("#4CFF00"))
+                "10" ->priorityTextView.setTextColor(Color.parseColor("#0AC100"))
+            }
+
+//            if(task.priority!! == "2")
+//                priorityTextView.setTextColor(Color.BLUE)
         }
     }
 
