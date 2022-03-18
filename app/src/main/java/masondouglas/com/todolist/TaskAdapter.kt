@@ -31,14 +31,12 @@ public class TaskAdapter(val context: Context,
         with(viewHolder){
             taskTextView.text = task.taskName
             priorityTextView.text = task.priority
-            Log.i("DB_Response", "inside CreateTask, IM IN THE SYSTEM4!")
             dateTextView.text = task.dueDate
 
         }
     }
 
     override fun getItemCount(): Int {
-        Log.i("DB_Response", "inside CreateTask, IM IN THE SYSTEM5!")
         return tasks.size
     }
 

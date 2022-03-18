@@ -1,5 +1,6 @@
 package masondouglas.com.todolist
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -18,6 +19,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
+        binding.btnNewTask.setOnClickListener{
+            startActivity(Intent(this,taskCreationActivity::class.java))
+        }
 
         val viewModel : taskViewModel by viewModels()
         viewModel.getTasks().observe(this) { projects ->

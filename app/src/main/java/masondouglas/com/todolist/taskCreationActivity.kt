@@ -1,5 +1,6 @@
 package masondouglas.com.todolist
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -24,6 +25,10 @@ class taskCreationActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         auth = Firebase.auth
+
+        binding.btnBack.setOnClickListener{
+            startActivity(Intent(this,MainActivity::class.java))
+        }
         binding.btnCreateTask.setOnClickListener {
             var taskName = binding.txtTaskName.text.toString().trim()
             var description = binding.txtDescription.text.toString().trim()
