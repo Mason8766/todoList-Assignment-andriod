@@ -23,7 +23,6 @@ public class subTaskAdapter(val context: Context,
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): subTaskViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.item_task, parent, false)
-        Log.i("DB_Response", "inside CreateTask, IM IN THE SYSTEM2!")
         return subTaskViewHolder(view)
 
     }
@@ -31,7 +30,6 @@ public class subTaskAdapter(val context: Context,
     override fun onBindViewHolder(viewHolder: subTaskViewHolder, position: Int) {
         val subtask = tasks[position]
         with(viewHolder){
-            Log.i("DB_Response", "inside CreateTask, IM IN THE SYSTEM2!")
             subTaskTextView.text = subtask.taskName
             subPriorityTextView.text = subtask.priority
         }
