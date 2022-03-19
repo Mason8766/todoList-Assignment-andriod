@@ -40,6 +40,8 @@ class subTaskActivity : AppCompatActivity() {
         var holder = ArrayList<Task>()
         val viewModel : taskViewModel by viewModels()
         viewModel.getSubTasks(task.id).observe(this, { subTasks ->
+            holder.removeAll(holder)
+            Log.i("DB_Response", "inside CreateTask, IM IN THE SYSTEM3!")
             subTasks.filter { x -> x.parent == taskId }
             for (temp in subTasks){
                 if(temp.parent == taskId)
@@ -85,8 +87,7 @@ class subTaskActivity : AppCompatActivity() {
             }
         }
         binding.btnBack.setOnClickListener {
-           // startActivity(Intent(this,MainActivity::class.java))
-            binding.recyclerSubTaskView.removeAllViews()
+            startActivity(Intent(this,MainActivity::class.java))
         }
     }
 }

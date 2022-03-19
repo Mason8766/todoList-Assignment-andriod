@@ -103,6 +103,8 @@ public class TaskAdapter(
                 "10" ->priorityTextView.setTextColor(Color.parseColor("#0AC100"))
             }
 
+
+            itemView
 //            if(task.priority!! == "2")
 //                priorityTextView.setTextColor(Color.BLUE)
         }

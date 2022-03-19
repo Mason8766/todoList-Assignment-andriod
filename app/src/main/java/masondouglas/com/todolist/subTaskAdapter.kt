@@ -80,7 +80,7 @@ public class subTaskAdapter(val context: Context,
                         .addOnSuccessListener { Log.d(ContentValues.TAG, "DB_DELETE COMPLETE") }
                         .addOnFailureListener { e -> Log.w(ContentValues.TAG, "Error deleting document", e) }
                 }
-                subTaskTextView.setTextColor(Color.parseColor("#FF0000"))
+
 
             }
             if (flag == 1)

@@ -58,14 +58,19 @@ class taskViewModel() : ViewModel() {
     fun getTasks() : LiveData<List<Task>> {
         return tasks
     }
-    fun getSubTasks(parentId : String?) : LiveData<List<Task>> {
-//        var subTaskList = MutableLiveData<List<Task>>()
-//        subTaskList = subTasks
-////
-//        subTasks.value = subTasks.value?.filter { x -> x.parent == parentId }
-//
-//       // subTasks.value = subTaskList
+    fun getSubTasks(taskId : String?) : LiveData<List<Task>> {
 
+
+////        subTasks.value = subTasks.value?.filter { x -> x.parent == parentId }
+////
+////       // subTasks.value = subTaskList
+//        var holder = ArrayList<Task>()
+//        subTaskList.filter { x -> x.parent == parentId }
+//                    for (temp in subTaskList){
+//                        if(temp.parent == parentId)
+//                            holder.add(temp)
+//                    }
+//        subTasks.value = holder
         return subTasks
     }
 }
