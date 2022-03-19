@@ -10,7 +10,7 @@
         android:id="@+id/lblDescription"
         android:layout_width="353dp"
         android:layout_height="121dp"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore"
+        android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,7 +55,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.079"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.482" />
 
     <TextView
         android:id="@+id/textView2"
@@ -99,6 +100,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerSubTaskView"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_width="389dp"
         android:layout_height="284dp"
         app:layout_constraintBottom_toBottomOf="parent"

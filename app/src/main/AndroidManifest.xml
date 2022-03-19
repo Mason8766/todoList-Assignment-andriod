@@ -10,18 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TodoList">
         <activity
+            android:name=".subTaskActivity"
+            android:exported="false" />
+        <activity
             android:name=".taskCreationActivity"
-            android:exported="false"/>
-
+            android:exported="false" />
         <activity
             android:name=".weeklyActivity"
             android:exported="false" />
         <activity
-            android:name=".subTaskActivity"
-            android:exported="false" />
-        <activity
             android:name=".signinActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,8 +29,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="false"/>
-
+            android:exported="false" />
     </application>
 
 </manifest>

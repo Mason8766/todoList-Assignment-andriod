@@ -9,9 +9,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-public class TaskAdapter(val context: Context,
-                  val tasks : List<Task>,
-                         val itemListener : taskItemListener
+public class TaskAdapter(
+    val context: Context,
+    val tasks: List<Task>,
+    val itemListener: MainActivity
                   ) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
                       inner class TaskViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){

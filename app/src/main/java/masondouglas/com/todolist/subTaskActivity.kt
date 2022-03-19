@@ -3,6 +3,7 @@ package masondouglas.com.todolist
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import masondouglas.com.todolist.databinding.ActivitySubTaskBinding
@@ -32,6 +33,11 @@ class subTaskActivity : AppCompatActivity() {
 
 
 
+
+        val viewModel : taskViewModel by viewModels()
+        viewModel.getTasks().observe(this, { tasks ->
+            binding.recyclerSubTaskView.adapter = subTaskAdapter(this,tasks)
+        })
 
 
 
