@@ -42,6 +42,11 @@ class taskViewModel() : ViewModel() {
                            // if(task.parent == userId)
                                 subTaskList.add(task)}
                     }
+//                    subTaskList.filter { x -> x.parent == taskId }
+//                    for (temp in subTasks){
+//                        if(temp.parent == taskId)
+//                            holder.add(temp)
+//                    }
                     tasks.value = taskList
                     subTasks.value = subTaskList
 

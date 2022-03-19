@@ -3,11 +3,13 @@ package masondouglas.com.todolist
 import android.content.ContentValues
 import android.content.Context
 import android.graphics.Color
+import android.media.Image
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
@@ -23,6 +25,9 @@ public class TaskAdapter(
                           val priorityTextView = itemView.findViewById<TextView>(R.id.lblPriority)
                           val dateTextView = itemView.findViewById<TextView>(R.id.lblDate)
                           val chxBox = itemView.findViewById<CheckBox>(R.id.cbxComplete)
+
+                          val upArrow = itemView.findViewById<ImageView>(R.id.btnUp)
+                          val downArrow = itemView.findViewById<ImageView>(R.id.btnDown)
                           //Log.i("DB_Response", "inside CreateTask, IM IN THE SYSTEM2!")
                       }
 
@@ -45,15 +50,49 @@ public class TaskAdapter(
             }
 
 
+            var priHolder = 0
+            val db = FirebaseFirestore.getInstance().collection("task")
+            upArrow.setOnClickListener {
+                priHolder = Integer.parseInt(task.priority)
+
+                priHolder += 1
+
+                if(priHolder > 10 || priHolder < 1)
+                    priHolder = 5
+                task.id?.let { it1 ->
+                    db.document(it1)
+                        .update("priority", priHolder.toString())
+                }
+
+
+            }
+
+            downArrow.setOnClickListener {
+                priHolder = Integer.parseInt(task.priority)
+
+                priHolder -= 1
+
+                if(priHolder > 10 || priHolder < 1)
+                    priHolder = 5
+                task.id?.let { it1 ->
+                    db.document(it1)
+                        .update("priority", priHolder.toString())
+                }
+
+            }
 
             chxBox.setOnClickListener {
-                val db = FirebaseFirestore.getInstance().collection("task")
                 task.id?.let { it1 ->
                     db.document(it1)
                         .delete()
                         .addOnSuccessListener { Log.d(ContentValues.TAG, "DB_DELETE COMPLETE") }
                         .addOnFailureListener { e -> Log.w(ContentValues.TAG, "Error deleting document", e) }
                 }
+
+//                task.id?.let { it1 ->
+//                    db.document(it1)
+//                        .update("priority", "PIZZA")
+//                }
             }
             when(task.priority) {
                 "1" -> priorityTextView.setTextColor(Color.parseColor("#FF0000"))
