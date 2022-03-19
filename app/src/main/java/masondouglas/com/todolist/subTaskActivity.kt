@@ -58,6 +58,7 @@ class subTaskActivity : AppCompatActivity() {
 
 
 
+
         binding = ActivitySubTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -84,8 +85,8 @@ class subTaskActivity : AppCompatActivity() {
             }
         }
         binding.btnBack.setOnClickListener {
-            startActivity(Intent(this,MainActivity::class.java))
-
+           // startActivity(Intent(this,MainActivity::class.java))
+            binding.recyclerSubTaskView.removeAllViews()
         }
     }
 }

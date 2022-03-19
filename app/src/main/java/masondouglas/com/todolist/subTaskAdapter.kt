@@ -81,7 +81,7 @@ public class subTaskAdapter(val context: Context,
                         .addOnFailureListener { e -> Log.w(ContentValues.TAG, "Error deleting document", e) }
                 }
                 subTaskTextView.setTextColor(Color.parseColor("#FF0000"))
-                //flag = 1
+
             }
             if (flag == 1)
                 chxBox.isChecked = true
