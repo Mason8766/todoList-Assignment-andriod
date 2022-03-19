@@ -1,13 +1,16 @@
 package masondouglas.com.todolist
 
+import android.content.ContentValues
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.tasks.Tasks
+import com.google.firebase.firestore.FirebaseFirestore
 
 public class subTaskAdapter(val context: Context,
                             val tasks: List<Task>
@@ -16,6 +19,7 @@ public class subTaskAdapter(val context: Context,
     inner class subTaskViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
         val subTaskTextView = itemView.findViewById<TextView>(R.id.lblTask)
         val subPriorityTextView = itemView.findViewById<TextView>(R.id.lblPriority)
+        val chxBox = itemView.findViewById<CheckBox>(R.id.cbxComplete)
         //val dateTextView = itemView.findViewById<TextView>(R.id.lblDate)
 
     }
@@ -32,6 +36,16 @@ public class subTaskAdapter(val context: Context,
         with(viewHolder){
             subTaskTextView.text = subtask.taskName
             subPriorityTextView.text = subtask.priority
+
+            chxBox.setOnClickListener {
+                val db = FirebaseFirestore.getInstance().collection("task")
+                subtask.id?.let { it1 ->
+                    db.document(it1)
+                        .delete()
+                        .addOnSuccessListener { Log.d(ContentValues.TAG, "DB_DELETE COMPLETE") }
+                        .addOnFailureListener { e -> Log.w(ContentValues.TAG, "Error deleting document", e) }
+                }
+            }
         }
     }
 

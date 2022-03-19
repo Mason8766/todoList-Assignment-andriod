@@ -1,13 +1,16 @@
 package masondouglas.com.todolist
 
+import android.content.ContentValues
 import android.content.Context
 import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.FirebaseFirestore
 
 public class TaskAdapter(
     val context: Context,
@@ -19,6 +22,7 @@ public class TaskAdapter(
                           val taskTextView = itemView.findViewById<TextView>(R.id.lblTask)
                           val priorityTextView = itemView.findViewById<TextView>(R.id.lblPriority)
                           val dateTextView = itemView.findViewById<TextView>(R.id.lblDate)
+                          val chxBox = itemView.findViewById<CheckBox>(R.id.cbxComplete)
                           //Log.i("DB_Response", "inside CreateTask, IM IN THE SYSTEM2!")
                       }
 
@@ -27,6 +31,7 @@ public class TaskAdapter(
         val view = inflater.inflate(R.layout.item_task, parent, false)
         return TaskViewHolder(view)
         Log.i("DB_Response", "inside CreateTask, IM IN THE SYSTEM3!")
+
     }
 
     override fun onBindViewHolder(viewHolder: TaskAdapter.TaskViewHolder, position: Int) {
@@ -40,6 +45,16 @@ public class TaskAdapter(
             }
 
 
+
+            chxBox.setOnClickListener {
+                val db = FirebaseFirestore.getInstance().collection("task")
+                task.id?.let { it1 ->
+                    db.document(it1)
+                        .delete()
+                        .addOnSuccessListener { Log.d(ContentValues.TAG, "DB_DELETE COMPLETE") }
+                        .addOnFailureListener { e -> Log.w(ContentValues.TAG, "Error deleting document", e) }
+                }
+            }
             when(task.priority) {
                 "1" -> priorityTextView.setTextColor(Color.parseColor("#FF0000"))
                 "2" -> priorityTextView.setTextColor(Color.parseColor("#FF4700"))

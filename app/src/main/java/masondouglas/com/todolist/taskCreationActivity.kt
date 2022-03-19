@@ -1,5 +1,6 @@
 package masondouglas.com.todolist
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -44,6 +45,12 @@ class taskCreationActivity : AppCompatActivity() {
                 db.document(id).set(task)
                     .addOnSuccessListener { Toast.makeText(this,"Task added", Toast.LENGTH_LONG).show() }
                     .addOnFailureListener{ Log.w("DB_Fail", it.localizedMessage)}
+
+
+                db.document("0B6jUPCfEnCWV6RO5Au0")
+                    .delete()
+                    .addOnSuccessListener { Log.d(TAG, "DB_DELETE COMPLETE") }
+                    .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
             }
             else{
                 Toast.makeText(this, "Task name not entered", Toast.LENGTH_LONG).show()

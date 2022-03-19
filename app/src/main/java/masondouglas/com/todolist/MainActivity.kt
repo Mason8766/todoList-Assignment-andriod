@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity(), TaskAdapter.taskItemListener {
 
 
 
+
         binding.btnNewTask.setOnClickListener{
             startActivity(Intent(this,taskCreationActivity::class.java))
         }

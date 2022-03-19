@@ -47,6 +47,7 @@ class subTaskActivity : AppCompatActivity() {
             }
 
             binding.recyclerSubTaskView.adapter = subTaskAdapter(this,holder)
+          //  holder.clear()
         })
 
 
@@ -61,6 +62,7 @@ class subTaskActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnAddSubTask.setOnClickListener {
+            holder.clear()
             var taskName = binding.txtSubTaskName.text.toString().trim()
             var priority = binding.txtSubTaskPriority.text.toString().trim()
             var descrpiton = "N/A"
