@@ -36,7 +36,25 @@ class taskCreationActivity : AppCompatActivity() {
             var dueDate = binding.txtDueDate.text.toString().trim()
             var priority = binding.txtPriority.text.toString().trim()
 
-            if (taskName.isNotEmpty()){
+            //if user enters a invalid priholder
+            var priHolder = 0
+
+            try{
+                priHolder = Integer.parseInt(priority)
+
+                if(priHolder > 10)
+                    priHolder = 10
+                else if (priHolder < 1)
+                    priHolder = 1
+
+                priority = priHolder.toString()
+            }catch(e:  java.lang.NumberFormatException){
+
+                priority = "5"
+            }
+
+
+            if (taskName.isNotEmpty()){//INPUT TASK into database
 
                 val db = FirebaseFirestore.getInstance().collection("task")
 
@@ -52,7 +70,7 @@ class taskCreationActivity : AppCompatActivity() {
                     .addOnSuccessListener { Log.d(TAG, "DB_DELETE COMPLETE") }
                     .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
             }
-            else{
+            else{//task could not be added because it was empty
                 Toast.makeText(this, "Task name not entered", Toast.LENGTH_LONG).show()
             }
         }

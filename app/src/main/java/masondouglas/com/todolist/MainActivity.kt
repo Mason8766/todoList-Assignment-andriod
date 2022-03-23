@@ -19,10 +19,6 @@ class MainActivity : AppCompatActivity(), TaskAdapter.taskItemListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-
-
-
         binding.btnNewTask.setOnClickListener{
             startActivity(Intent(this,taskCreationActivity::class.java))
         }
@@ -33,8 +29,7 @@ class MainActivity : AppCompatActivity(), TaskAdapter.taskItemListener {
 
         }
 
-
-        }
+    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)

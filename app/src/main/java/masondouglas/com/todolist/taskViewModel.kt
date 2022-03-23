@@ -34,19 +34,11 @@ class taskViewModel() : ViewModel() {
                     for(document in documents){
                         Log.i("DB_Response", "${document.data}")
                         val task = document.toObject(Task::class.java)
-                        if(task.isSubTask == false)
+                        if(task.isSubTask == false)//checks if this is a subtask, assings task to appropriate array
                             taskList.add(task)
                         else{
-//                            Log.i("MD_Task Parent", "${task.parent}")
-//                            Log.i("MD_Task ID", "${task}")
-                           // if(task.parent == userId)
                                 subTaskList.add(task)}
                     }
-//                    subTaskList.filter { x -> x.parent == taskId }
-//                    for (temp in subTasks){
-//                        if(temp.parent == taskId)
-//                            holder.add(temp)
-//                    }
                     tasks.value = taskList
                     subTasks.value = subTaskList
 
@@ -60,17 +52,6 @@ class taskViewModel() : ViewModel() {
     }
     fun getSubTasks(taskId : String?) : LiveData<List<Task>> {
 
-
-////        subTasks.value = subTasks.value?.filter { x -> x.parent == parentId }
-////
-////       // subTasks.value = subTaskList
-//        var holder = ArrayList<Task>()
-//        subTaskList.filter { x -> x.parent == parentId }
-//                    for (temp in subTaskList){
-//                        if(temp.parent == parentId)
-//                            holder.add(temp)
-//                    }
-//        subTasks.value = holder
         return subTasks
     }
 }

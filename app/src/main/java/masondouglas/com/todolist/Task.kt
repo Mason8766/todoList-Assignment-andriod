@@ -1,7 +1,7 @@
 package masondouglas.com.todolist
 
-import java.util.*
 
+//the class that holds the task object
 data class Task(
     var taskName  : String? = null,
     var description : String? = null,

@@ -49,8 +49,10 @@ public class subTaskAdapter(val context: Context,
 
                 priHolder += 1
 
-                if(priHolder > 10 || priHolder < 1)
-                    priHolder = 5
+                if(priHolder > 10)
+                    priHolder = 10
+                else if (priHolder < 1)
+                    priHolder = 1
                 subtask.id?.let { it1 ->
                     db.document(it1)
                         .update("priority", priHolder.toString())
@@ -62,10 +64,12 @@ public class subTaskAdapter(val context: Context,
             downArrow.setOnClickListener {
                 priHolder = Integer.parseInt(subtask.priority)
 
-                priHolder -= 1
+                priHolder -=1
+                if(priHolder > 10)
+                    priHolder = 10
+                else if (priHolder < 1)
+                    priHolder = 1
 
-                if(priHolder > 10 || priHolder < 1)
-                    priHolder = 5
                 subtask.id?.let { it1 ->
                     db.document(it1)
                         .update("priority", priHolder.toString())

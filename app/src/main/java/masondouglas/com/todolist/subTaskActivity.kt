@@ -21,8 +21,7 @@ class subTaskActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        //get the course information and update the header
+        //gets the task info, and updates the lables
         val taskId = intent.getStringExtra("taskID")
         val db = FirebaseFirestore.getInstance().collection("task")
         var task = Task()
@@ -39,16 +38,17 @@ class subTaskActivity : AppCompatActivity() {
 
 
 
+        //gets the subtask item, and puts it in the recylcer
 
         var holder = ArrayList<Task>()
         val viewModel : taskViewModel by viewModels()
         viewModel.getSubTasks(task.id).observe(this, { subTasks ->
-            holder.removeAll(holder)
+            holder.removeAll(holder)//clears the filtered list
             Log.i("DB_Response", "inside CreateTask, IM IN THE SYSTEM3!")
             subTasks.filter { x -> x.parent == taskId }
             for (temp in subTasks){
                 if(temp.parent == taskId)
-                    holder.add(temp)
+                    holder.add(temp)//adds the items that are filtered
             }
 
             binding.recyclerSubTaskView.adapter = subTaskAdapter(this,holder)
@@ -60,19 +60,35 @@ class subTaskActivity : AppCompatActivity() {
         binding = ActivitySubTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         binding.btnAddSubTask.setOnClickListener {
             holder.clear()
             var taskName = binding.txtSubTaskName.text.toString().trim()
             var priority = binding.txtSubTaskPriority.text.toString().trim()
-            var descrpiton = "N/A"
-            var dueDate = "N/A"
 
+            //if user enters a invalid priholder
+            var priHolder = 0
+
+            try{
+                priHolder = Integer.parseInt(priority)
+
+                if(priHolder > 10)
+                    priHolder = 10
+                else if (priHolder < 1)
+                    priHolder = 1
+
+                priority = priHolder.toString()
+            }catch(e:  java.lang.NumberFormatException){
+
+                priority = "5"
+            }
+
+            //adds a new subtask
             if (taskName.isNotEmpty()){
 
                 val db = FirebaseFirestore.getInstance().collection("task")
-
                 val id = db.document().getId()
-                var subtask = Task(taskName,descrpiton,dueDate, priority,id, auth.currentUser!!.uid,true,taskId)
+                var subtask = Task(taskName,null,null, priority,id, auth.currentUser!!.uid,true,taskId)
 
                 db.document(id).set(subtask)
                     .addOnSuccessListener { Toast.makeText(this,"Task added", Toast.LENGTH_LONG).show() }
@@ -82,11 +98,14 @@ class subTaskActivity : AppCompatActivity() {
                 Toast.makeText(this, "Task name not entered", Toast.LENGTH_LONG).show()
             }
         }
+        //returns to the main menu
         binding.btnBack.setOnClickListener {
             startActivity(Intent(this,MainActivity::class.java))
         }
 
     }
+
+    //menu options
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
         return true

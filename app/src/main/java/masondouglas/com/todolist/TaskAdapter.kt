@@ -24,18 +24,18 @@ public class TaskAdapter(
                           val taskTextView = itemView.findViewById<TextView>(R.id.lblTask)
                           val priorityTextView = itemView.findViewById<TextView>(R.id.lblPriority)
                           val dateTextView = itemView.findViewById<TextView>(R.id.lblDate)
-                          val chxBox = itemView.findViewById<CheckBox>(R.id.cbxComplete)
 
+                          //user inputs
+                          val chxBox = itemView.findViewById<CheckBox>(R.id.cbxComplete)
                           val upArrow = itemView.findViewById<ImageView>(R.id.btnUp)
                           val downArrow = itemView.findViewById<ImageView>(R.id.btnDown)
-                          //Log.i("DB_Response", "inside CreateTask, IM IN THE SYSTEM2!")
+
                       }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskAdapter.TaskViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.item_task, parent, false)
         return TaskViewHolder(view)
-        Log.i("DB_Response", "inside CreateTask, IM IN THE SYSTEM3!")
 
     }
 
@@ -45,7 +45,7 @@ public class TaskAdapter(
             taskTextView.text = task.taskName
             priorityTextView.text = task.priority
             dateTextView.text = task.dueDate
-            itemView.setOnClickListener {
+            itemView.setOnClickListener {//if this item is clicked
                 itemListener.taskSelected(task)
             }
 
@@ -57,8 +57,11 @@ public class TaskAdapter(
 
                 priHolder += 1
 
-                if(priHolder > 10 || priHolder < 1)
-                    priHolder = 5
+                //if the user tries to go over the given amount
+                if(priHolder > 10)
+                    priHolder = 10
+                else if (priHolder < 1)
+                    priHolder = 1
                 task.id?.let { it1 ->
                     db.document(it1)
                         .update("priority", priHolder.toString())
@@ -72,8 +75,10 @@ public class TaskAdapter(
 
                 priHolder -= 1
 
-                if(priHolder > 10 || priHolder < 1)
-                    priHolder = 5
+                if(priHolder > 10)
+                    priHolder = 10
+                else if (priHolder < 1)
+                    priHolder = 1
                 task.id?.let { it1 ->
                     db.document(it1)
                         .update("priority", priHolder.toString())
@@ -94,6 +99,7 @@ public class TaskAdapter(
 //                        .update("priority", "PIZZA")
 //                }
             }
+            //changes priority color based on how urgent it is
             when(task.priority) {
                 "1" -> priorityTextView.setTextColor(Color.parseColor("#FF0000"))
                 "2" -> priorityTextView.setTextColor(Color.parseColor("#FF4700"))
@@ -104,7 +110,7 @@ public class TaskAdapter(
             }
 
 
-            itemView
+           // itemView
 //            if(task.priority!! == "2")
 //                priorityTextView.setTextColor(Color.BLUE)
         }
