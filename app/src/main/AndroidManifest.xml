@@ -9,9 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TodoList">
+
         <activity
             android:name=".subTaskActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustNothing"/>
         <activity
             android:name=".taskCreationActivity"
             android:exported="false" />
@@ -30,6 +32,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+
     </application>
 
 </manifest>
