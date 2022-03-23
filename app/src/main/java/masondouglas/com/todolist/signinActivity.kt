@@ -27,6 +27,7 @@ class signinActivity : AppCompatActivity() {
         // Create and launch sign-in intent
         val signInIntent = AuthUI.getInstance()
             .createSignInIntentBuilder()
+            .setLogo(R.drawable.logo)
             .setAvailableProviders(providers)
             .build()
         signInLauncher.launch(signInIntent)
