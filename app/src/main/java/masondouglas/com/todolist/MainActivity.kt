@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.activity.viewModels
+import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
 import masondouglas.com.todolist.databinding.ActivityMainBinding
 
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity(), TaskAdapter.taskItemListener {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
 
 
@@ -41,7 +43,17 @@ class MainActivity : AppCompatActivity(), TaskAdapter.taskItemListener {
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == R.id.item1){
         startActivity(Intent(this,taskCreationActivity::class.java))
+            return true
+        }else{
+            AuthUI.getInstance()
+                .signOut(this)
+                .addOnCompleteListener {
+                    startActivity(Intent(this,signinActivity::class.java))
+                }
+            return true
+        }
         return super.onOptionsItemSelected(item)
     }
 

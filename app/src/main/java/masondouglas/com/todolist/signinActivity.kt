@@ -47,6 +47,7 @@ class signinActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             intent.putExtra("user", user)
             startActivity(intent)
+
             // ...
         } else {
             // Sign in failed. If response is null the user canceled the

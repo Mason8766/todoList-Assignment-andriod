@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.viewModels
+import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -93,8 +94,19 @@ class subTaskActivity : AppCompatActivity() {
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        startActivity(Intent(this,taskCreationActivity::class.java))
+        if(item.itemId == R.id.item1){
+            startActivity(Intent(this,taskCreationActivity::class.java))
+            return true
+        }else{
+            AuthUI.getInstance()
+                .signOut(this)
+                .addOnCompleteListener {
+                    startActivity(Intent(this,signinActivity::class.java))
+                }
+            return true
+        }
         return super.onOptionsItemSelected(item)
     }
+
 
 }
