@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">TodoList</string>
+    <string name="create_new_task">Create New Task</string>
+    <string name="description">Description:</string>
+    <string name="add_a_sub_task">Add a Sub Task</string>
+    <string name="subtask_name">Subtask Name</string>
+    <string name="priority">Priority</string>
+    <string name="add">Add</string>
+    <string name="sub_task_s">Sub Task\'s</string>
+    <string name="return">Return</string>
+    <string name="completed">Completed?</string>
+    <string name="_1_10">1-10</string>
+    <string name="description">Description:</string>
+    <string name="due_date">Due Date:</string>
+    <string name="mm_dd_yyyy">mm/dd/yyyy</string>
+    <string name="priority_1_10">Priority(1-10):</string>
+    <string name="create_task">Create Task</string>
+    <string name="back">Back</string>
 </resources>
