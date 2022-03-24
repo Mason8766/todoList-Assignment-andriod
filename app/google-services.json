@@ -7,12 +7,57 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:688266979316:android:a1acf49c8cf71001ed3ba1",
+        "android_client_info": {
+          "package_name": "com.constantlearningdad.w22timetracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "688266979316-uee177771qp1dj4f529hfp5l7umcjs0l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCweLnOUWBPuIp2yYqiw-xW5MowcJzP5fw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "688266979316-uee177771qp1dj4f529hfp5l7umcjs0l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:688266979316:android:2aadb1324438f22bed3ba1",
         "android_client_info": {
           "package_name": "masondouglas.com.todolist"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "688266979316-ieig4lj937080oenk56s6kbhon9hha78.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "masondouglas.com.todolist",
+            "certificate_hash": "29286f5a3cfb1aca3de5d451ae18fcd852ea0ea9"
+          }
+        },
+        {
+          "client_id": "688266979316-o7ft87i5l5ukhfkh43kt713nblfv88e3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "masondouglas.com.todolist",
+            "certificate_hash": "6749a88740d2bded2e8127f907ac0ab115641e3d"
+          }
+        },
         {
           "client_id": "688266979316-uee177771qp1dj4f529hfp5l7umcjs0l.apps.googleusercontent.com",
           "client_type": 3
