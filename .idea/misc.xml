@@ -12,18 +12,11 @@
         <entry key="..\:/Users/mason/AndroidStudioProjects/todoList-Assignment-andriod/app/src/main/res/layout/activity_signin.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/mason/AndroidStudioProjects/todoList-Assignment-andriod/app/src/main/res/layout/activity_task_creation.xml" value="0.358695652173913" />
         <entry key="..\:/Users/mason/AndroidStudioProjects/todoList-Assignment-andriod/app/src/main/res/layout/item_task.xml" value="0.25" />
-        <entry key="..\:/Users/mason/AndroidStudioProjects/todoList-Assignment-andriods/app/src/main/res/drawable/ic_add.xml" value="0.3675" />
-        <entry key="..\:/Users/mason/AndroidStudioProjects/todoList-Assignment-andriods/app/src/main/res/drawable/ic_signout.xml" value="0.101" />
-        <entry key="..\:/Users/mason/AndroidStudioProjects/todoList-Assignment-andriods/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/mason/AndroidStudioProjects/todoList-Assignment-andriods/app/src/main/res/layout/activity_signin.xml" value="0.3432971014492754" />
-        <entry key="..\:/Users/mason/AndroidStudioProjects/todoList-Assignment-andriods/app/src/main/res/layout/activity_sub_task.xml" value="0.3432971014492754" />
-        <entry key="..\:/Users/mason/AndroidStudioProjects/todoList-Assignment-andriods/app/src/main/res/layout/activity_task_creation.xml" value="0.3432971014492754" />
-        <entry key="..\:/Users/mason/AndroidStudioProjects/todoList-Assignment-andriods/app/src/main/res/layout/activity_weekly.xml" value="0.17831813576494426" />
-        <entry key="..\:/Users/mason/AndroidStudioProjects/todoList-Assignment-andriods/app/src/main/res/layout/item_task.xml" value="0.67" />
-        <entry key="..\:/Users/mason/AndroidStudioProjects/todoList-Assignment-andriods/app/src/main/res/menu/main_menu.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/mason/StudioProjects/todoList-Assignment-andriod/app/src/main/res/layout/activity_sub_task.xml" value="0.25" />
       </map>
     </option>
+  </component>
+  <component name="ProjectPlainTextFileTypeManager">
+    <file url="file://$PROJECT_DIR$/app/src/main/res/values/themes.xml" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
