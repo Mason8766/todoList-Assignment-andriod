@@ -93,6 +93,8 @@ class subTaskActivity : AppCompatActivity() {
                 db.document(id).set(subtask)
                     .addOnSuccessListener { Toast.makeText(this,"Task added", Toast.LENGTH_LONG).show() }
                     .addOnFailureListener{ Log.w("DB_Fail", it.localizedMessage)}
+                binding.txtSubTaskName.setText("")
+                binding.txtSubTaskPriority.setText("")
             }
             else{
                 Toast.makeText(this, "Task name not entered", Toast.LENGTH_LONG).show()

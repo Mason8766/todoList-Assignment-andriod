@@ -64,11 +64,15 @@ class taskCreationActivity : AppCompatActivity() {
                     .addOnSuccessListener { Toast.makeText(this,"Task added", Toast.LENGTH_LONG).show() }
                     .addOnFailureListener{ Log.w("DB_Fail", it.localizedMessage)}
 
+                binding.txtTaskName.setText("")
+                binding.txtDescription.setText("")
+                binding.txtDueDate.setText("")
+                binding.txtPriority.setText("")
 
-                db.document("0B6jUPCfEnCWV6RO5Au0")
-                    .delete()
-                    .addOnSuccessListener { Log.d(TAG, "DB_DELETE COMPLETE") }
-                    .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
+//                db.document("0B6jUPCfEnCWV6RO5Au0")
+//                    .delete()
+//                    .addOnSuccessListener { Log.d(TAG, "DB_DELETE COMPLETE") }
+//                    .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
             }
             else{//task could not be added because it was empty
                 Toast.makeText(this, "Task name not entered", Toast.LENGTH_LONG).show()
