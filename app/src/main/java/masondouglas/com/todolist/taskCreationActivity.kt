@@ -33,19 +33,7 @@ class taskCreationActivity : AppCompatActivity() {
         auth = Firebase.auth
 
         binding.btnBack.setOnClickListener{
-            //startActivity(Intent(this,MainActivity::class.java))
-            val calendarEvent = Calendar.getInstance()
-           // calendarEvent.set(2022,3,31)
-            val i = Intent(Intent.ACTION_EDIT)
-            val exp = calendarEvent.set(2022,3,31)
-
-            //
-            i.putExtra("beginTime", calendarEvent.timeInMillis)
-            i.putExtra("allDay", true)
-            i.putExtra("rule", "FREQ=YEARLY")
-            i.putExtra("endTime", calendarEvent.timeInMillis + 60 * 60 * 1000)
-            i.putExtra("title", "Calendar Event")
-            startActivity(i)
+            startActivity(Intent(this,MainActivity::class.java))
         }
         binding.btnCreateTask.setOnClickListener {
 
@@ -58,6 +46,7 @@ class taskCreationActivity : AppCompatActivity() {
             var description = binding.txtDescription.text.toString().trim()
             var priority = binding.txtPriority.text.toString().trim()
 
+            val check = binding.cbxCalender.isChecked
             var month = binding.txtMonth.text.toString().trim()
             var day = binding.txtDate.text.toString().trim()
             var year = binding.txtYear.text.toString().trim()
@@ -81,8 +70,26 @@ class taskCreationActivity : AppCompatActivity() {
                 priority = "5"
             }
 
+            var flag = 1;
 
-            if (taskName.isNotEmpty()){//INPUT TASK into database
+
+            try{
+               var nummonth = Integer.parseInt(month)
+
+              var  numday = Integer.parseInt(day)
+
+              var  numyear = Integer.parseInt(year)
+
+
+                if(nummonth < 1 || nummonth > 12 )
+                    flag = 0
+
+            }catch(e:  java.lang.NumberFormatException){
+
+                Toast.makeText(this, "Invalid date, cannot be used for google calander", Toast.LENGTH_LONG).show()
+            }
+
+            if (taskName.isNotEmpty() && flag==1){//INPUT TASK into database
 
                 val db = FirebaseFirestore.getInstance().collection("task")
 
@@ -94,16 +101,33 @@ class taskCreationActivity : AppCompatActivity() {
 
                 binding.txtTaskName.setText("")
                 binding.txtDescription.setText("")
-
                 binding.txtPriority.setText("")
 
+                if(check) {
+                    val calendarEvent = Calendar.getInstance()
+                    calendarEvent.set(Integer.parseInt(year),Integer.parseInt(month)-1,Integer.parseInt(day))
+                    val i = Intent(Intent.ACTION_EDIT)
+                    i.type = "vnd.android.cursor.item/event"
+                    i.putExtra("beginTime", calendarEvent.timeInMillis)
+                    i.putExtra("allDay", true)
+
+                    i.putExtra("endTime", calendarEvent.timeInMillis)
+                    i.putExtra("title", taskName)
+                    startActivity(i)
+                }
+                binding.txtDate.setText("")
+                binding.txtMonth.setText("")
+                binding.txtYear.setText("")
 //                db.document("0B6jUPCfEnCWV6RO5Au0")
 //                    .delete()
 //                    .addOnSuccessListener { Log.d(TAG, "DB_DELETE COMPLETE") }
 //                    .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
+
+
+
             }
             else{//task could not be added because it was empty
-                Toast.makeText(this, "Task name not entered", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Task name not entered,", Toast.LENGTH_LONG).show()
             }
         }
 
