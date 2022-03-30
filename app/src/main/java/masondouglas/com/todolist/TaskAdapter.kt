@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.graphics.Color
 import android.media.Image
+import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
+
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -39,12 +41,13 @@ public class TaskAdapter(
 
     }
 
+
     override fun onBindViewHolder(viewHolder: TaskAdapter.TaskViewHolder, position: Int) {
         val task = tasks[position]
         with(viewHolder){
             taskTextView.text = task.taskName
             priorityTextView.text = task.priority
-            dateTextView.text = task.dueDate
+            dateTextView.text = task.dueDate.toString()
             itemView.setOnClickListener {//if this item is clicked
                 itemListener.taskSelected(task)
             }

@@ -10,8 +10,10 @@
         <entry key="..\:/Users/mason/AndroidStudioProjects/todoList-Assignment-andriod/app/src/main/res/drawable/background.xml" value="0.181" />
         <entry key="..\:/Users/mason/AndroidStudioProjects/todoList-Assignment-andriod/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
         <entry key="..\:/Users/mason/AndroidStudioProjects/todoList-Assignment-andriod/app/src/main/res/layout/activity_signin.xml" value="0.1" />
-        <entry key="..\:/Users/mason/AndroidStudioProjects/todoList-Assignment-andriod/app/src/main/res/layout/activity_task_creation.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/mason/AndroidStudioProjects/todoList-Assignment-andriod/app/src/main/res/layout/activity_sub_task.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/mason/AndroidStudioProjects/todoList-Assignment-andriod/app/src/main/res/layout/activity_task_creation.xml" value="0.33" />
         <entry key="..\:/Users/mason/AndroidStudioProjects/todoList-Assignment-andriod/app/src/main/res/layout/item_task.xml" value="0.25" />
+        <entry key="..\:/Users/mason/AndroidStudioProjects/todoList-Assignment-andriod/app/src/main/res/menu/main_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/mason/AndroidStudioProjects/todoList-Assignment-andriod/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.18" />
         <entry key="..\:/Users/mason/AndroidStudioProjects/todoList-Assignment-andriod/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.249" />
       </map>
