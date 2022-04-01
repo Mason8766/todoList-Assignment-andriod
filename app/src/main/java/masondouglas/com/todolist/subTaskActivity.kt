@@ -80,7 +80,7 @@ class subTaskActivity : AppCompatActivity() {
                 priority = priHolder.toString()
             }catch(e:  java.lang.NumberFormatException){
 
-                priority = "5"
+                priHolder = 5
             }
 
             //adds a new subtask
@@ -88,7 +88,7 @@ class subTaskActivity : AppCompatActivity() {
 
                 val db = FirebaseFirestore.getInstance().collection("task")
                 val id = db.document().getId()
-                var subtask = Task(taskName,null,null, priority,id, auth.currentUser!!.uid,true,taskId)
+                var subtask = Task(taskName,null,null, priHolder,id, auth.currentUser!!.uid,true,taskId)
 
                 db.document(id).set(subtask)
                     .addOnSuccessListener { Toast.makeText(this,"Task added", Toast.LENGTH_LONG).show() }

@@ -46,7 +46,7 @@ public class TaskAdapter(
         val task = tasks[position]
         with(viewHolder){
             taskTextView.text = task.taskName
-            priorityTextView.text = task.priority
+            priorityTextView.text = task.priority.toString()
             dateTextView.text = task.dueDate.toString()
             itemView.setOnClickListener {//if this item is clicked
                 itemListener.taskSelected(task)
@@ -56,7 +56,7 @@ public class TaskAdapter(
             var priHolder = 0
             val db = FirebaseFirestore.getInstance().collection("task")
             upArrow.setOnClickListener {
-                priHolder = Integer.parseInt(task.priority)
+                priHolder = task.priority!!
 
                 priHolder += 1
 
@@ -67,14 +67,14 @@ public class TaskAdapter(
                     priHolder = 1
                 task.id?.let { it1 ->
                     db.document(it1)
-                        .update("priority", priHolder.toString())
+                        .update("priority", priHolder)
                 }
 
 
             }
 
             downArrow.setOnClickListener {
-                priHolder = Integer.parseInt(task.priority)
+                priHolder = task.priority!!
 
                 priHolder -= 1
 
@@ -84,7 +84,7 @@ public class TaskAdapter(
                     priHolder = 1
                 task.id?.let { it1 ->
                     db.document(it1)
-                        .update("priority", priHolder.toString())
+                        .update("priority", priHolder)
                 }
 
             }
@@ -104,12 +104,12 @@ public class TaskAdapter(
             }
             //changes priority color based on how urgent it is
             when(task.priority) {
-                "1" -> priorityTextView.setTextColor(Color.parseColor("#FF0000"))
-                "2" -> priorityTextView.setTextColor(Color.parseColor("#FF4700"))
-                "3" -> priorityTextView.setTextColor(Color.parseColor("#FF9900"))
-                "8" -> priorityTextView.setTextColor(Color.parseColor("#8CFF00"))
-                "9" ->priorityTextView.setTextColor(Color.parseColor("#4CFF00"))
-                "10" ->priorityTextView.setTextColor(Color.parseColor("#0AC100"))
+                10 -> priorityTextView.setTextColor(Color.parseColor("#FF0000"))
+                9 -> priorityTextView.setTextColor(Color.parseColor("#FF4700"))
+                8 -> priorityTextView.setTextColor(Color.parseColor("#FF9900"))
+                3 -> priorityTextView.setTextColor(Color.parseColor("#8CFF00"))
+                2 ->priorityTextView.setTextColor(Color.parseColor("#4CFF00"))
+                1 ->priorityTextView.setTextColor(Color.parseColor("#0AC100"))
             }
 
 

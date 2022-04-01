@@ -39,13 +39,13 @@ public class subTaskAdapter(val context: Context,
         val subtask = tasks[position]
         with(viewHolder){
             subTaskTextView.text = subtask.taskName
-            subPriorityTextView.text = subtask.priority
+            subPriorityTextView.text = subtask.priority.toString()
 
             var flag = 0
             var priHolder = 0
             val db = FirebaseFirestore.getInstance().collection("task")
             upArrow.setOnClickListener {
-                priHolder = Integer.parseInt(subtask.priority)
+                priHolder = subtask.priority!!
 
                 priHolder += 1
 
@@ -55,14 +55,14 @@ public class subTaskAdapter(val context: Context,
                     priHolder = 1
                 subtask.id?.let { it1 ->
                     db.document(it1)
-                        .update("priority", priHolder.toString())
+                        .update("priority", priHolder)
                 }
 
 
             }
 
             downArrow.setOnClickListener {
-                priHolder = Integer.parseInt(subtask.priority)
+                priHolder = subtask.priority!!
 
                 priHolder -=1
                 if(priHolder > 10)
@@ -72,7 +72,7 @@ public class subTaskAdapter(val context: Context,
 
                 subtask.id?.let { it1 ->
                     db.document(it1)
-                        .update("priority", priHolder.toString())
+                        .update("priority", priHolder)
                 }
 
             }

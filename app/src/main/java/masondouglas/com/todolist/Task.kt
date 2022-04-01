@@ -8,7 +8,7 @@ data class Task(
     var taskName  : String? = null,
     var description : String? = null,
     var dueDate : String? = null,
-    var priority : String? = null,
+    var priority : Int? = null,
     var id : String? = null,
     var userId : String? = null,
     var isSubTask: Boolean = false,

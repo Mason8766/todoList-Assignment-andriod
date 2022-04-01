@@ -67,7 +67,7 @@ class taskCreationActivity : AppCompatActivity() {
                 priority = priHolder.toString()
             }catch(e:  java.lang.NumberFormatException){
 
-                priority = "5"
+                priHolder = 5
             }
 
             var flag = 1;
@@ -94,7 +94,7 @@ class taskCreationActivity : AppCompatActivity() {
                 val db = FirebaseFirestore.getInstance().collection("task")
 
                 val id = db.document().getId()
-                var task = Task(taskName,description,date, priority,id, auth.currentUser!!.uid)
+                var task = Task(taskName,description,date, priHolder,id, auth.currentUser!!.uid)
                 db.document(id).set(task)
                     .addOnSuccessListener { Toast.makeText(this,"Task added", Toast.LENGTH_LONG).show() }
                     .addOnFailureListener{ Log.w("DB_Fail", it.localizedMessage)}
@@ -106,6 +106,9 @@ class taskCreationActivity : AppCompatActivity() {
                 if(check) {
                     val calendarEvent = Calendar.getInstance()
                     calendarEvent.set(Integer.parseInt(year),Integer.parseInt(month)-1,Integer.parseInt(day))
+
+                    
+
                     val i = Intent(Intent.ACTION_EDIT)
                     i.type = "vnd.android.cursor.item/event"
                     i.putExtra("beginTime", calendarEvent.timeInMillis)
