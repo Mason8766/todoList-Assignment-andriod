@@ -1,16 +1,12 @@
 package masondouglas.com.todolist
 
-import android.content.ContentValues.TAG
+import android.annotation.SuppressLint
 import android.content.Intent
-import android.icu.util.LocaleData
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.TextView
+import java.time.LocalDate
 import android.widget.Toast
-import androidx.lifecycle.ViewModel
-import androidx.activity.viewModels
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -25,6 +21,7 @@ class taskCreationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTaskCreationBinding
     private lateinit var auth: FirebaseAuth
 
+    @SuppressLint("NewApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityTaskCreationBinding.inflate(layoutInflater)
@@ -53,6 +50,8 @@ class taskCreationActivity : AppCompatActivity() {
 
 
             var date = month +"/" + day +"/"+year
+            if(date =="//")
+                date = ""
             //if user enters a invalid priholder
             var priHolder = 0
 
@@ -71,8 +70,8 @@ class taskCreationActivity : AppCompatActivity() {
             }
 
             var flag = 1;
-
-
+            //var dateLocal = LocalDate.of(0,0,0)
+            //dateLocal = LocalDate.of(2021,1,5)
             try{
                var nummonth = Integer.parseInt(month)
 
@@ -81,6 +80,8 @@ class taskCreationActivity : AppCompatActivity() {
               var  numyear = Integer.parseInt(year)
 
 
+
+              //  dateLocal = LocalDate.of(2021,1,5)
                 if(nummonth < 1 || nummonth > 12 )
                     flag = 0
 
@@ -94,7 +95,7 @@ class taskCreationActivity : AppCompatActivity() {
                 val db = FirebaseFirestore.getInstance().collection("task")
 
                 val id = db.document().getId()
-                var task = Task(taskName,description,date, priHolder,id, auth.currentUser!!.uid)
+                var task = Task(taskName,description,date, priHolder,id, auth.currentUser!!.uid,false,null,)
                 db.document(id).set(task)
                     .addOnSuccessListener { Toast.makeText(this,"Task added", Toast.LENGTH_LONG).show() }
                     .addOnFailureListener{ Log.w("DB_Fail", it.localizedMessage)}

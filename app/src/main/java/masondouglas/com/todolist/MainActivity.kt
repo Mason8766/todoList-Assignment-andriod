@@ -23,6 +23,11 @@ class MainActivity : AppCompatActivity(), TaskAdapter.taskItemListener {
             startActivity(Intent(this,taskCreationActivity::class.java))
         }
 
+        binding.btnWeekly.setOnClickListener {
+            startActivity(Intent(this,weeklyActivity::class.java))
+        }
+
+
         val viewModel : taskViewModel by viewModels()
         viewModel.getTasks().observe(this) { tasks ->
              val tasksr = tasks.reversed()
