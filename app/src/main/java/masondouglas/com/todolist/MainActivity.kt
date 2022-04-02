@@ -30,8 +30,11 @@ class MainActivity : AppCompatActivity(), TaskAdapter.taskItemListener {
 
         val viewModel : taskViewModel by viewModels()
         viewModel.getTasks().observe(this) { tasks ->
-             val tasksr = tasks.reversed()
-            binding.recycler.adapter = TaskAdapter(this, tasksr,this )
+            viewModel.getSubTasks().observe(this){subtask ->
+                val tasksr = tasks.reversed()
+                binding.recycler.adapter = TaskAdapter(this, tasksr,subtask,this )
+            }
+
 
         }
 

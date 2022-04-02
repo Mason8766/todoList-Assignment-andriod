@@ -54,6 +54,11 @@ class taskViewModel() : ViewModel() {
 
         return subTasks
     }
+    fun getSubTasks() : LiveData<List<Task>> {
+
+        return subTasks
+    }
+
 }
 
 

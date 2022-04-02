@@ -12,6 +12,8 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.viewModels
+import androidx.activity.viewModels
 
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
@@ -19,6 +21,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 public class TaskAdapter(
     val context: Context,
     val tasks: List<Task>,
+    val subtasks: List<Task>,
     val itemListener: MainActivity
                   ) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
@@ -94,13 +97,38 @@ public class TaskAdapter(
                     db.document(it1)
                         .delete()
                         .addOnSuccessListener { Log.d(ContentValues.TAG, "DB_DELETE COMPLETE") }
-                        .addOnFailureListener { e -> Log.w(ContentValues.TAG, "Error deleting document", e) }
-                }
+                        .addOnFailureListener { e ->
+                            Log.w(
+                                ContentValues.TAG,
+                                "Error deleting document",
+                                e
+                            )
+                        }
 
-//                task.id?.let { it1 ->
-//                    db.document(it1)
-//                        .update("priority", "PIZZA")
-//                }
+                }
+                for (subtask in subtasks) {
+                    if (task.id == subtask.parent) {
+                        subtask.id?.let { it1 ->
+                            db.document(it1)
+                                .delete()
+                                .addOnSuccessListener {
+                                    Log.d(
+                                        ContentValues.TAG,
+                                        "DB_DELETE COMPLETE"
+                                    )
+                                }
+                                .addOnFailureListener { e ->
+                                    Log.w(
+                                        ContentValues.TAG,
+                                        "Error deleting document",
+                                        e
+                                    )
+                                }
+                        }
+                    }
+
+
+                }
             }
             //changes priority color based on how urgent it is
             when(task.priority) {
