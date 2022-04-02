@@ -87,7 +87,8 @@ class taskCreationActivity : AppCompatActivity() {
 
             }catch(e:  java.lang.NumberFormatException){
 
-                Toast.makeText(this, "Invalid date, cannot be used for google calander", Toast.LENGTH_LONG).show()
+                if(month.isEmpty() == false || day.isEmpty() == false|| year.isEmpty() == false)
+                    Toast.makeText(this, "Invalid date, cannot be used for google calander", Toast.LENGTH_LONG).show()
             }
 
             if (taskName.isNotEmpty() && flag==1){//INPUT TASK into database

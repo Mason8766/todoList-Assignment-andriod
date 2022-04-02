@@ -62,7 +62,7 @@ class weeklyActivity : AppCompatActivity() {
             current = current.plusDays(1)
             binding.lblMonth7.setText(current.month.toString())
             binding.lblDay7.setText(current.dayOfMonth.toString())
-
+            current = LocalDate.now()
             for(task in tasks)
             {
 
@@ -79,13 +79,15 @@ class weeklyActivity : AppCompatActivity() {
                     //val compare = current.compareTo(date)
 
 
-                   // list1.add(compare.toString())
+//                    list1.add((date.dayOfYear.toString()))
+//                    list1.add(current.dayOfYear.toString())
+//                    list1.add(compare.toString())
                     when(compare) {
-                       0 -> {
+                        0 -> {
 //                           binding.lblMonth1.set = date.month.toString()
 //                           binding.lblDay1.text = date.dayOfMonth.toString()
-                           list1.add(task.taskName.toString())
-                       }
+                            list1.add(task.taskName.toString())
+                        }
                         1 -> {
                             list2.add(task.taskName.toString())
                         }
