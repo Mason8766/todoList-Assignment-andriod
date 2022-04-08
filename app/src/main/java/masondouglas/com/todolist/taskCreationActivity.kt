@@ -131,7 +131,9 @@ class taskCreationActivity : AppCompatActivity() {
 
 
             }
-            else{//task could not be added because it was empty
+            else if (flag != 1){//task could not be added because it was empty
+                Toast.makeText(this, "Invalid Task", Toast.LENGTH_LONG).show()
+            }else{
                 Toast.makeText(this, "Task name not entered,", Toast.LENGTH_LONG).show()
             }
         }
