@@ -67,6 +67,7 @@ class weeklyActivity : AppCompatActivity() {
             {
 
                 if(task.dueDate != "") {
+                    try{
                     var dateList: List<String>
                     dateList = task.dueDate?.split("/")!!
                     var month = Integer.parseInt(dateList[0])
@@ -113,6 +114,9 @@ class weeklyActivity : AppCompatActivity() {
                         }
                     }
                     x = 1
+                }catch (e:  java.time.DateTimeException){
+                        continue
+                    }
                 }
             }
 
