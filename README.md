@@ -24,3 +24,6 @@ Technology to be implemented...
 -Navigational menus, to switch between scenes
 
 -Upload and publish to the google play store
+
+
+app icon provided by clicker.com
