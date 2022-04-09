@@ -27,3 +27,12 @@ Technology to be implemented...
 
 
 app icon provided by clicker.com
+
+ASSIGNMENT 3 ADDONS
+added weekly view
+Sorts priority from decending order
+Deleteing a task, deletes its sub task
+Added google calander intergration
+Added Icon
+New Date System + date validator
+general UI improvments
