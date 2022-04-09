@@ -44,14 +44,14 @@ class subTaskActivity : AppCompatActivity() {
         val viewModel : taskViewModel by viewModels()
         viewModel.getSubTasks(task.id).observe(this, { subTasks ->
             holder.removeAll(holder)//clears the filtered list
-            Log.i("DB_Response", "inside CreateTask, IM IN THE SYSTEM3!")
             subTasks.filter { x -> x.parent == taskId }
             for (temp in subTasks){
                 if(temp.parent == taskId)
                     holder.add(temp)//adds the items that are filtered
-            }
 
-            binding.recyclerSubTaskView.adapter = subTaskAdapter(this,holder)
+            }
+            var holderS = holder.reversed()
+            binding.recyclerSubTaskView.adapter = subTaskAdapter(this,holderS)
           //  holder.clear()
         })
 

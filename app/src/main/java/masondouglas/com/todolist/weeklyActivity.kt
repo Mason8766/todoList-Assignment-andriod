@@ -27,6 +27,7 @@ class weeklyActivity : AppCompatActivity() {
         viewModel.getTasks().observe(this) { tasks ->
             var x = 0
 
+            //create the list objects
             var list1 = mutableListOf<String>()
             var list2 = mutableListOf<String>()
             var list3 = mutableListOf<String>()
@@ -36,6 +37,7 @@ class weeklyActivity : AppCompatActivity() {
             var list7 =mutableListOf<String>()
             var current = LocalDate.now()
 
+            //set the values of all the labels
             binding.lblMonth1.setText(current.month.toString())
             binding.lblDay1.setText(current.dayOfMonth.toString())
 
@@ -63,11 +65,11 @@ class weeklyActivity : AppCompatActivity() {
             binding.lblMonth7.setText(current.month.toString())
             binding.lblDay7.setText(current.dayOfMonth.toString())
             current = LocalDate.now()
-            for(task in tasks)
+            for(task in tasks) //for each task that had a due date
             {
 
                 if(task.dueDate != "") {
-                    try{
+                    try{//make sure the date can be converted
                     var dateList: List<String>
                     dateList = task.dueDate?.split("/")!!
                     var month = Integer.parseInt(dateList[0])
@@ -83,7 +85,7 @@ class weeklyActivity : AppCompatActivity() {
 //                    list1.add((date.dayOfYear.toString()))
 //                    list1.add(current.dayOfYear.toString())
 //                    list1.add(compare.toString())
-                    when(compare) {
+                    when(compare) {//determine if the  date is within 7 days of todays date
                         0 -> {
 //                           binding.lblMonth1.set = date.month.toString()
 //                           binding.lblDay1.text = date.dayOfMonth.toString()
@@ -119,7 +121,7 @@ class weeklyActivity : AppCompatActivity() {
                     }
                 }
             }
-
+//update the list
             for(task in list1)
                 binding.lblTask1.setText(binding.lblTask1.text.toString() +" " +task.toString())
             for(task in list2)
